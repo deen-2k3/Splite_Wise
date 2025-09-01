@@ -1,5 +1,9 @@
 import User from "../module/user.js";
 import bcrypt from "bcryptjs";
+//import _ from "lodash";
+import _ from "underscore";
+
+
 
 export const register = async (req, res) => {
   try {
@@ -42,6 +46,9 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+   
+  
+   
 
     if (!email || !password) {
       return res.status(400).json({
@@ -65,13 +72,36 @@ export const login = async (req, res) => {
         success: false,
       });
     }
+    const token =user.generateAuthToken();
+    res.cookie("token",token,{httpOnly:true})
+    .send(_.pick(user, ["_id", "name"]));
 
-    return res.status(200).json({
-      message: `Welcome back ${user.fullname}`,
-      success: true,
-    });
+    // return res.status(200).json({
+    //   message: `Welcome back ${user.fullname}`,
+    //   success: true,
+    // });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error", success: false });
   }
 };
+export const logout=async(req,res)=>{
+  try {
+    res.clearCookies("token",{
+      httpOnly:true,
+      secure:false,
+      sameSite:"strict",
+    });
+    res.status(200).json({
+      success:true,
+      message:"Logout successfully."
+    })
+    
+  } catch (error) {
+   return res.status(500).json({
+    success:false,
+    message:"Something went worng"
+   })
+    
+  }
+}

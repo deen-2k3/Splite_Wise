@@ -1,6 +1,6 @@
-import ExpenseManagement from "../module/ExpenseManagement";
-import GroupCreation from "../module/GroupCreation";
-import BalancesSettel from "../module/BalancesSettel";
+import ExpenseManagement from "../module/ExpenseManagement.js";
+import GroupCreation from "../module/GroupCreation.js";
+import BalancesSettel from "../module/BalancesSettel.js";
 //import { addExpense } from "./BalancesSettleController";
 
 
