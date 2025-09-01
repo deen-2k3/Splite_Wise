@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import userRoute from "./routes/user.routes.js";
-import GroupRouter from "./routes/GroupCreationRoute.js"
+import GroupRouter from "./routes/GroupCreationRoute.js";
+import ExpenseManagement from "./routes/BalanceSettelRoute.js";
 
 dotenv.config();
 const app = express();
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 // API Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/group",GroupRouter)
+app.use("/api/v1/Expense",ExpenseManagement);
 
 // Start Server
 const PORT = process.env.PORT || 5000;

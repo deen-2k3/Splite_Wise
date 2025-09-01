@@ -68,7 +68,7 @@ export const settleBalance=async(req,res)=>{
             return res.status(404).json({
                 message:"Balance is not found.",
                 success:false
-            })
+            })  
         }
         balance.isSettled=true,
         await balance.save();
