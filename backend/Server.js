@@ -5,13 +5,18 @@ import dotenv from "dotenv";
 import userRoute from "./routes/user.routes.js";
 import GroupRouter from "./routes/GroupCreationRoute.js";
 import ExpenseManagement from "./routes/BalanceSettelRoute.js";
+import cookieParser from "cookie-parser";
+
 
 dotenv.config();
 const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(cors({ origin: "http://localhost:5173", // frontend origin
+  credentials: true,}));
 
 // MongoDB Connection
 mongoose
