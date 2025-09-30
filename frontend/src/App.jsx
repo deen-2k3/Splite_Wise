@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './Pages/SignUp.jsx';
 import Login from './Pages/Login.jsx';
+//import tailwindConfig from '../tailwind.config.js';
 
 function App() {
   return (
