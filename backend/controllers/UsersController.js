@@ -105,7 +105,7 @@ export const logout=async(req,res)=>{
   } catch (error) {
    return res.status(500).json({
     success:false,
-    message:"Something went wron"
+    message:"Something went wrong"
    })
     
   }
