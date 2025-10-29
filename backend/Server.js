@@ -24,7 +24,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("✅ MongoDB connected"))
+  .then(() => console.log("✅ MongoDB connected ...."))
   .catch((err) => console.error("❌ MongoDB error:", err.message));
 
 // Test route
