@@ -9,7 +9,7 @@ export const getDashboard=async(req,res)=>{
             {$group:{_id:null,total:{$sum:"$amount"}}}
         ]);
         const totalowned=await BalancesSettel.aggregate([
-            {$match:{from:userId}},
+            {$match:{from:userId}}, 
             {$group:{_id:null,total:{$sum:"$amount"}}}
 
         ]);
