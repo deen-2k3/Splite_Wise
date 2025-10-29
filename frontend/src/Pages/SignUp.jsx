@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { apiConnector } from "../Services/apiConnector";
 import { SignInUrl } from "../Services/apis";
 
+
 const SignUp = () => {
   const [data, setData] = useState({
     fullname: "",

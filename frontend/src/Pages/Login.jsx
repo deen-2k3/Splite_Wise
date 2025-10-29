@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { apiConnector } from "../Services/apiConnector";
 import { loginUrl } from "../Services/apis";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+  const navigate=useNavigate();
 
   const { email, password } = data;
 
@@ -20,6 +22,7 @@ const Login = () => {
     try {
       const res = await apiConnector("POST", loginUrl, data);
       console.log("✅ Login Successfully:", res.data);
+      navigate('/Home');
 
       // Example: save token if returned
       if (res.data.token) {

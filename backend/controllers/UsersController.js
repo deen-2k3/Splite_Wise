@@ -73,7 +73,12 @@ export const login = async (req, res) => {
       });
     }
     const token =user.generateAuthToken();
-    res.cookie("token",token,{httpOnly:true})
+    res.cookie("token",token,{
+      httpOnly:true,
+      secure:false,
+      sameSite:"strict"
+      
+    })
     .send(_.pick(user, ["_id", "name"]));
 
     // return res.status(200).json({
@@ -100,7 +105,7 @@ export const logout=async(req,res)=>{
   } catch (error) {
    return res.status(500).json({
     success:false,
-    message:"Something went worng"
+    message:"Something went wrong"
    })
     
   }
