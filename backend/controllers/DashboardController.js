@@ -11,7 +11,7 @@ export const getDashboard=async(req,res)=>{
         const totalowned=await BalancesSettel.aggregate([
             {$match:{from:userId}}, 
             {$group:{_id:null,total:{$sum:"$amount"}}}
-
+  
         ]);
         const totalTocollect=await BalancesSettel.aggregate([
             {$match:{to:userId}},

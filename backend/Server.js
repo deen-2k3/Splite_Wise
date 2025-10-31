@@ -31,11 +31,19 @@ mongoose
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
+app.get("/api/v1/checkAuth",(req,res)=>{
+if (req.cookies.token){
+  return res.json({loggedIn:true})
+}else {
+  return res.json({loggedIn:false})
+}
+})
 
 // API Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/group",GroupRouter)
 app.use("/api/v1/Expense",ExpenseManagement);
+
 
 // Start Server
 const PORT = process.env.PORT || 5000;

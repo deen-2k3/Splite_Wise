@@ -90,23 +90,21 @@ export const login = async (req, res) => {
     res.status(500).json({ message: "Server error", success: false });
   }
 };
-export const logout=async(req,res)=>{
+export const logout = async (req, res) => {
   try {
-    res.clearCookies("token",{
-      httpOnly:true,
-      secure:false,
-      sameSite:"strict",
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: false,
+      sameSite: "strict",
     });
-    res.status(200).json({
-      success:true,
-      message:"Logout successfully."
-    })
-    
+    return res.status(200).json({
+      success: true,
+      message: "Logout successfully.",
+    });
   } catch (error) {
-   return res.status(500).json({
-    success:false,
-    message:"Something went wrong"
-   })
-    
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
   }
-}
+};
